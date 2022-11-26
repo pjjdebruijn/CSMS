@@ -24,7 +24,36 @@
                  {
                      Id = 1,
                      Name = "Foo function",
-                     Code = "Bar",
+                     Code = @"@page  ""/CodeSnippets""
+
+@inject NavigationManager NavigationManager
+
+<h3>CodeSnippetList</h3>
+<br />
+<CodeSnippetSearchComponent 
+    OnSearchCodeSnippet=""OnCodeSnippetSearch""></CodeSnippetSearchComponent>
+<br />
+<CodeSnippetListComponent SearchTerm=""@searchTerm""></CodeSnippetListComponent>
+<br />
+<button 
+    type=""button"" 
+    class=""btn btn-primary""
+    @onclick=""AddCodeSnippet"">Add code snippet</button>
+
+
+@code {
+    private string searchTerm = string.Empty;
+
+    private void OnCodeSnippetSearch(string searchTerm)
+    {
+        this.searchTerm = searchTerm;
+    }
+
+    private void AddCodeSnippet()
+    {
+        this.NavigationManager.NavigateTo(""/AddCodeSnippet"");
+    }
+}",
                      Author = "Hoe Lang",
                      Description = "usefull function that returns Foo",
                      PublicationDate = DateOnly.FromDateTime(new DateTime(1984,12,6)),
@@ -34,7 +63,28 @@
                  {
                      Id = 2,
                      Name = "Faa Class",
-                     Code = "Bor",
+                     Code = @"    public class ViewCodeSnippetsByNameUseCase : IViewCodeSnippetsByNameUseCase
+    {
+        private readonly ICodeSnippetRepository codeSnippetsRepository;
+
+        public ViewCodeSnippetsByNameUseCase(ICodeSnippetRepository codeSnippetsRepository)
+        {
+            this.codeSnippetsRepository = codeSnippetsRepository;
+        }
+
+        /// <summary>
+        ///     Executes an Asynchrous operation that returns an IEnumerable<Codesnippets> 
+        ///     and accepts a string name parameter, neccesary to perform the asynchrous operation.
+        ///     poetry in code.
+        /// </summary>
+        /// <param name=""name"">name parmater used to perform an asynchrous search operation</param>
+        /// <returns>Task<IEnumerable<CodeSnippet>></returns>
+        public async Task<IEnumerable<CodeSnippet>> ExecuteAsync(string name = """")
+        {
+            // Simple PassThrough
+            return await this.codeSnippetsRepository.GetCodeSnippetsByNameAsync(name);
+        }
+    }",
                      Author = "So Lang",
                      Description = "Class for working with Faa",
                      PublicationDate = DateOnly.FromDateTime(new DateTime(1999,2,3)),
@@ -44,7 +94,10 @@
                  {
                      Id = 3,
                      Name= "Fee function",
-                     Code = "Bier",
+                     Code = @"// map abstractions to concrete implementations (enables dependency injection)
+builder.Services.AddSingleton<ICodeSnippetRepository, CodeSnippetRepository>();
+builder.Services.AddTransient<IViewCodeSnippetsByNameUseCase, ViewCodeSnippetsByNameUseCase>();
+builder.Services.AddTransient<IAddCodeSnippetUseCase, AddCodeSnippetUseCase>();",
                      Author = "Fee fa Tovenaar",
                      Description = "verwerkt automagisch Fee",
                      PublicationDate = DateOnly.FromDateTime(new DateTime(2021,7,26)),
@@ -64,7 +117,7 @@
                  {
                      Id = 5,
                      Name = "KungFoo",
-                     Code = "                if (true)\r\n            {\r\n\r\n            }",
+                     Code = "                if (false)\r\n            {\r\n\r\n            }",
                      Author= "Chuck Norris",
                      Description = "Function that kicks ass",
                      PublicationDate= DateOnly.FromDateTime(new DateTime(1984,12,6)),
@@ -74,7 +127,19 @@
                  {
                      Id = 6,
                      Name = "KungFooTOO",
-                     Code = "Bar",
+                     Code = @"public class AddCodeSnippetUseCase : IAddCodeSnippetUseCase
+    {
+        private readonly ICodeSnippetRepository codeSnippetRepository;
+
+        public AddCodeSnippetUseCase(ICodeSnippetRepository codeSnippetRepository)
+        {
+            this.codeSnippetRepository = codeSnippetRepository;
+        }
+        public async Task ExecuteAsync(CodeSnippet codeSnippet)
+        {
+            await this.codeSnippetRepository.AddCodeSnippetAsync(codeSnippet);
+        }
+    }",
                      Author = "Bruce Wie",
                      Description = "Function that kicks ass too",
                      PublicationDate = DateOnly.FromDateTime(new DateTime(1984,12,6)),
@@ -84,13 +149,39 @@
                  {
                      Id = 8,
                      Name = "HaYaaa",
-                     Code = "HaYaaa",
+                     Code = @"        public Task AddCodeSnippetAsync(CodeSnippet codeSnippet)
+        {
+            if (_codeSnippets.Any(x => x.Name.Equals(codeSnippet.Name, StringComparison.OrdinalIgnoreCase)))
+            {
+                return Task.CompletedTask; 
+            }
+            var maxId = this._codeSnippets.Max(x => x.Id);
+
+            codeSnippet.Id = maxId;
+
+            return Task.CompletedTask;
+
+        }",
                      Author = "Mopper Smurf",
                      Description = "id:10T Function",
                      PublicationDate = DateOnly.FromDateTime(new DateTime(2005,6,7)),
                      IsDeprecated = true,
                  },
             };
+        }
+
+        public Task AddCodeSnippetAsync(CodeSnippet codeSnippet)
+        {
+            if (_codeSnippets.Any(x => x.Name.Equals(codeSnippet.Name, StringComparison.OrdinalIgnoreCase)))
+            {
+                return Task.CompletedTask; 
+            }
+            var maxId = this._codeSnippets.Max(x => x.Id);
+
+            codeSnippet.Id = maxId;
+
+            return Task.CompletedTask;
+
         }
 
         public async Task<IEnumerable<CodeSnippet>> GetCodeSnippetsByNameAsync(string name)

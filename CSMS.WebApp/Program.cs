@@ -1,6 +1,8 @@
 using CSMS.Plugins.InMemory;
 using CSMS.UseCases.Feature.CodeSnippets;
 using CSMS.UseCases.FeatureUseCases.CodeSnippetsUseCases.CodeSnippetInterfaces;
+using CSMS.UseCases.FeatureUseCases.CodeSnippetUseCases;
+using CSMS.UseCases.FeatureUseCases.CodeSnippetUseCases.CodeSnippetInterfaces;
 using CSMS.UseCases.PluginInterfaces;
 
 
@@ -14,6 +16,7 @@ builder.Services.AddServerSideBlazor();
 // map abstractions to concrete implementations (enables dependency injection)
 builder.Services.AddSingleton<ICodeSnippetRepository, CodeSnippetRepository>();
 builder.Services.AddTransient<IViewCodeSnippetsByNameUseCase, ViewCodeSnippetsByNameUseCase>();
+builder.Services.AddTransient<IAddCodeSnippetUseCase, AddCodeSnippetUseCase>();
 
 // build app
 var app = builder.Build();
