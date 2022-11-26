@@ -1,0 +1,18 @@
+﻿@page  "/CodeSnippets"
+
+<h3>CodeSnippetList</h3>
+<br />
+<SearchCodeSnippetComponent 
+    OnSearchCodeSnippet="OnCodeSnippetSearch"></SearchCodeSnippetComponent>
+<br />
+<CodeSnippetListComponent SearchTerm="@searchTerm"></CodeSnippetListComponent>
+
+
+@code {
+    private string searchTerm = string.Empty;
+
+    private void OnCodeSnippetSearch(string searchTerm)
+    {
+        this.searchTerm = searchTerm;
+    }
+}

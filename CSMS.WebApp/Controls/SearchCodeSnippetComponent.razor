@@ -1,0 +1,32 @@
+﻿<div class="input-group">
+    <input type="text"
+            class="form-control"
+            placeholder="Type codesnippet name here to search"
+           @bind-value="codeSnippetNameToSearch" />
+    <button type="button"
+            class="btn-succes input-group-text" 
+            @onclick="OnSearch">Search</button>
+</div>
+
+@code {
+
+    private string codeSnippetNameToSearch = string.Empty;
+
+    // we need to pass out the search value to the parent
+    // information can be passed to the parent using eventcallbacks
+
+    [Parameter]
+    public EventCallback<string> OnSearchCodeSnippet { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    private void OnSearch()
+    {
+        // passes codesnippetname to search back to parent control
+        OnSearchCodeSnippet.InvokeAsync(codeSnippetNameToSearch);
+    }
+
+}

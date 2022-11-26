@@ -1,0 +1,40 @@
+﻿@using CSMS.UseCases.FeatureUseCases.CodeSnippetsUseCases.CodeSnippetInterfaces;
+@inject IViewCodeSnippetsByNameUseCase ViewCodeSnippetsByNameUseCase;
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>SnippetName</th>
+            <th>SnippetAuthor</th>
+            <th>PublicationDate</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var codeSnippet in listCodeSnippets)
+        {
+            <tr>
+                <td>@codeSnippet.Name</td>
+                <td>@codeSnippet.Author</td>
+                <td>@codeSnippet.PublicationDate</td>
+                <td>
+                    <button type="button" 
+                            class="btn btn-light"></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<CodeSnippet> listCodeSnippets = new List<CodeSnippet>();
+
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        listCodeSnippets = (await ViewCodeSnippetsByNameUseCase.ExecuteAsync(SearchTerm)).ToList();
+    }
+}

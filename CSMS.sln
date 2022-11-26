@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSMS.WebApp", "CSMS.WebApp\CSMS.WebApp.csproj", "{1DC7BC49-402C-4F73-AD1D-83C367FD5460}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSMS.UseCases", "CSMS.UseCases\CSMS.UseCases.csproj", "{51F80DD1-A318-4F75-B5C3-8641F46ADDB2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UseCaseDocumentsFolder", "UseCaseDocumentsFolder", "{274AA975-74D7-4EA4-899B-F7C5F6337857}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FinishedDocs", "FinishedDocs", "{2E000BB4-9B32-455F-8265-6269E6171ED6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InProgressDocs", "InProgressDocs", "{801C9579-822B-44DF-A8B0-995795C3F5C3}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\UseCases\CodeSnippetManagerUseCase.drawio = ..\..\..\UseCases\CodeSnippetManagerUseCase.drawio
+		..\..\..\UseCases\CodeSnippetManagerUseCase.drawio.html = ..\..\..\UseCases\CodeSnippetManagerUseCase.drawio.html
+		..\..\..\UseCases\principlesII.drawio = ..\..\..\UseCases\principlesII.drawio
+		..\..\..\UseCases\ProofOfConcept_UseCase_Driven_Design_Under_Clean_Architecture.drawio = ..\..\..\UseCases\ProofOfConcept_UseCase_Driven_Design_Under_Clean_Architecture.drawio
+		..\..\..\UseCases\ProofOfConcept_UseCase_Driven_Design_Under_Clean_Architecture.drawio.html = ..\..\..\UseCases\ProofOfConcept_UseCase_Driven_Design_Under_Clean_Architecture.drawio.html
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSMS.CoreBusiness", "CSMS.CoreBusiness\CSMS.CoreBusiness.csproj", "{03960DD5-E3F9-4240-B863-849C24BF2533}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSMS.Plugins", "CSMS.Plugins", "{E609AA85-97A8-414E-8D88-0DD85A40E400}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSMS.Plugins.InMemory", "CSMS.Plugins\CSMS.Plugins.InMemory\CSMS.Plugins.InMemory.csproj", "{574A536D-E90E-4A7C-9F17-C3B31F7259EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DC7BC49-402C-4F73-AD1D-83C367FD5460}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DC7BC49-402C-4F73-AD1D-83C367FD5460}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DC7BC49-402C-4F73-AD1D-83C367FD5460}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DC7BC49-402C-4F73-AD1D-83C367FD5460}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51F80DD1-A318-4F75-B5C3-8641F46ADDB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51F80DD1-A318-4F75-B5C3-8641F46ADDB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51F80DD1-A318-4F75-B5C3-8641F46ADDB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51F80DD1-A318-4F75-B5C3-8641F46ADDB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03960DD5-E3F9-4240-B863-849C24BF2533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03960DD5-E3F9-4240-B863-849C24BF2533}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03960DD5-E3F9-4240-B863-849C24BF2533}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03960DD5-E3F9-4240-B863-849C24BF2533}.Release|Any CPU.Build.0 = Release|Any CPU
+		{574A536D-E90E-4A7C-9F17-C3B31F7259EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{574A536D-E90E-4A7C-9F17-C3B31F7259EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{574A536D-E90E-4A7C-9F17-C3B31F7259EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{574A536D-E90E-4A7C-9F17-C3B31F7259EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2E000BB4-9B32-455F-8265-6269E6171ED6} = {274AA975-74D7-4EA4-899B-F7C5F6337857}
+		{801C9579-822B-44DF-A8B0-995795C3F5C3} = {274AA975-74D7-4EA4-899B-F7C5F6337857}
+		{574A536D-E90E-4A7C-9F17-C3B31F7259EA} = {E609AA85-97A8-414E-8D88-0DD85A40E400}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {515D29B0-410B-4DAA-9968-298A6B876568}
+	EndGlobalSection
+EndGlobal

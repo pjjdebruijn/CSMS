@@ -1,0 +1,37 @@
+﻿@page "/"
+@using CSMS.UseCases.FeatureUseCases.CodeSnippetsUseCases.CodeSnippetInterfaces;
+
+@inject IViewCodeSnippetsByNameUseCase ViewCodeSnippetsByNameUseCase
+
+<PageTitle>Test Page</PageTitle>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>SnippetName</th>
+            <th>SnippetAuthor</th>
+            <th>PublicationDate</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var codeSnippet in _codeSnippets)
+        {
+            <tr>
+                <td>@codeSnippet.Name</td>
+                <td>@codeSnippet.Author</td>
+                <td>@codeSnippet.PublicationDate</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code{
+
+    private List<CodeSnippet> _codeSnippets = new List<CodeSnippet>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _codeSnippets = (await ViewCodeSnippetsByNameUseCase.ExecuteAsync()).ToList();
+    }
+}
