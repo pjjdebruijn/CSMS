@@ -183,6 +183,25 @@ builder.Services.AddTransient<IAddCodeSnippetUseCase, AddCodeSnippetUseCase>();"
             return result;
         }
 
+        public async Task<CodeSnippet> GetCodeSnippetsByIdAsync(int id)
+        {
+            var snip = await Task.FromResult(_codeSnippets.First(x => x.Id == id));
+            var newSnip = new CodeSnippet
+            {
+                Id = snip.Id,
+                Name = snip.Name,
+                Code = snip.Code,
+                Author = snip.Author,
+                Description = snip.Description,
+                Category = snip.Category,
+                IsDeprecated = snip.IsDeprecated,
+                Language = snip.Language,
+                PublicationDate = snip.PublicationDate,
+            };
+
+            return await Task.FromResult(newSnip);
+        }
+
         public Task AddCodeSnippetAsync(CodeSnippet codeSnippet)
         {
             if (_codeSnippets.Any(x => x.Name.Equals(codeSnippet.Name, StringComparison.OrdinalIgnoreCase)))
@@ -224,5 +243,7 @@ builder.Services.AddTransient<IAddCodeSnippetUseCase, AddCodeSnippetUseCase>();"
 
             return Task.CompletedTask;
         }
+
+
     }
 }

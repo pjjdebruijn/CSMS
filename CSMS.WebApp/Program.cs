@@ -12,7 +12,9 @@ builder.Services.AddServerSideBlazor();
 
 // map abstractions to concrete implementations (enables dependency injection)
 builder.Services.AddSingleton<ICodeSnippetRepository, CodeSnippetRepository>();
+
 builder.Services.AddTransient<IViewCodeSnippetsByNameUseCase, ViewCodeSnippetsByNameUseCase>();
+builder.Services.AddTransient<IViewCodeSnippetsByIdUseCase, ViewCodeSnippetsByIdUseCase>();
 builder.Services.AddTransient<IAddCodeSnippetUseCase, AddCodeSnippetUseCase>();
 builder.Services.AddTransient<IUpdateCodeSnippetUseCase, UpdateCodeSnippetUseCase>();
 
