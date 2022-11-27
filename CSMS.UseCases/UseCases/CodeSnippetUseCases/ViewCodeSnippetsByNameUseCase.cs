@@ -1,9 +1,9 @@
-﻿namespace CSMS.UseCases.Feature.CodeSnippets
-{
-    using CSMS.CoreBusiness;
-    using CSMS.UseCases.UseCases.CodeSnippetInterfaces;
-    using CSMS.UseCases.PluginInterfaces;
+﻿using CSMS.CoreBusiness;
+using CSMS.UseCases.UseCases.CodeSnippetInterfaces;
+using CSMS.UseCases.PluginInterfaces;
 
+namespace CSMS.UseCases.UseCases.CodeSnippetUseCases
+{
     public class ViewCodeSnippetsByNameUseCase : IViewCodeSnippetsByNameUseCase
     {
         private readonly ICodeSnippetRepository codeSnippetsRepository;

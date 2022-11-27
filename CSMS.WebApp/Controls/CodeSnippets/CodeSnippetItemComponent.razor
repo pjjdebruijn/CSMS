@@ -1,4 +1,7 @@
-﻿@if (CodeSnippets != null && CodeSnippets.Count > 0)
+﻿@inject NavigationManager NavigationManager
+
+
+@if (CodeSnippets != null && CodeSnippets.Count > 0)
 {
     foreach (var codeSnippet in CodeSnippets)
     {
@@ -8,7 +11,7 @@
             <td>@codeSnippet.PublicationDate</td>
             <td>
                 <button type="button"
-                class="btn btn-light">Edit</button>
+                class="btn btn-light" @onclick="@(() => UpdateCodeSnippet(codeSnippet.Id))">Edit</button>
             </td>
         </tr>
     }
@@ -17,4 +20,9 @@
 @code {
     [Parameter]
     public List<CodeSnippet> CodeSnippets { get; set; } = new List<CodeSnippet>();
+
+    private void UpdateCodeSnippet(int codeSnippetID)
+    {
+        NavigationManager.NavigateTo($"/updatecodesnippet/{codeSnippetID}");
+    }
 }

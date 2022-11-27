@@ -1,14 +1,17 @@
-﻿@page "/AddCodeSnippet"
+﻿@page "/UpdateCodeSnippet/{Id:int}"
 @using CSMS.UseCases.UseCases.CodeSnippetInterfaces;
 
 @inject NavigationManager NavigationManager
-@inject IAddCodeSnippetUseCase AddCodeSnippetUseCase
+@inject IViewCodeSnippetsByIdUseCase ViewCodeSnippetsByIdUseCase
+@inject IUpdateCodeSnippetUseCase UpdateCodeSnippetUseCase
 
-<h3>Add Code Snippet</h3>
+<h3>Update Code Snippet</h3>
 <br />
+
 <EditForm Model="codeSnippet" OnValidSubmit="SaveCodeSnippetAsync">
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <ValidationSummary></ValidationSummary>
+
     <div class="form-group">
         <label for="name">Name</label>
         <InputText 
@@ -57,18 +60,29 @@
     <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
 </EditForm>
 
+
+
+
 @code {
+    [Parameter]
+    public int Id { get; set; }
+
     private CodeSnippet codeSnippet = new CodeSnippet();
+
+    protected async override Task OnParametersSetAsync()
+    {
+        this.codeSnippet= await ViewCodeSnippetsByIdUseCase.ExecuteAsync(this.Id);
+    }
 
     private async Task SaveCodeSnippetAsync()
     {
-        await AddCodeSnippetUseCase.ExecuteAsync(codeSnippet);
-        NavigationManager.NavigateTo("/CodeSnippets");
+        await UpdateCodeSnippetUseCase.ExecuteAsync(this.codeSnippet);
+        this.NavigationManager.NavigateTo("/CodeSnippets");
+
     }
 
     private void Cancel()
     {
-        NavigationManager.NavigateTo("/CodeSnippets");
+        this.NavigationManager.NavigateTo("/CodeSnippets");
     }
-
 }
