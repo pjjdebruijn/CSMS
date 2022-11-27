@@ -54,6 +54,7 @@
     </div>
     <br />
     <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
 </EditForm>
 
 @code {
@@ -62,6 +63,11 @@
     private async Task SaveCodeSnippetAsync()
     {
         await AddCodeSnippetUseCase.ExecuteAsync(codeSnippet);
+        NavigationManager.NavigateTo("/CodeSnippets");
+    }
+
+    private void Cancel()
+    {
         NavigationManager.NavigateTo("/CodeSnippets");
     }
 
