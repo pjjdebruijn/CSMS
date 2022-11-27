@@ -1,4 +1,4 @@
-﻿namespace CSMS.UseCases.Feature.CodeSnippets
+﻿namespace CSMS.UseCases.UseCases.CodeSnippetUseCases
 {
     using CSMS.CoreBusiness;
     using CSMS.UseCases.UseCases.CodeSnippetInterfaces;
