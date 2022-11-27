@@ -1,9 +1,8 @@
-﻿namespace CSMS.Plugins.InMemory
-{
-    using CSMS.CoreBusiness;
-    using CSMS.UseCases.PluginInterfaces;
-    using System.Security.Cryptography.X509Certificates;
+﻿using CSMS.CoreBusiness;
+using CSMS.UseCases.PluginInterfaces;
 
+namespace CSMS.Plugins.InMemory
+{
     /// <summary>
     ///     This plugin implements the CSMS.UseCasePluginInterface
     ///     When this plugin is registered in Program.cs of our webapp, 
@@ -210,7 +209,7 @@ builder.Services.AddTransient<IAddCodeSnippetUseCase, AddCodeSnippetUseCase>();"
             }
             var maxId = this._codeSnippets.Max(x => x.Id);
 
-            codeSnippet.Id = maxId;
+            codeSnippet.Id = maxId + 1;
             codeSnippet.PublicationDate = DateOnly.FromDateTime(DateTime.Now);
             codeSnippet.IsDeprecated = false;
 
