@@ -2,6 +2,7 @@
 {
     using CSMS.CoreBusiness;
     using CSMS.UseCases.PluginInterfaces;
+    using System.Security.Cryptography.X509Certificates;
 
     /// <summary>
     ///     This plugin implements the CSMS.UseCasePluginInterface
@@ -169,25 +170,6 @@ builder.Services.AddTransient<IAddCodeSnippetUseCase, AddCodeSnippetUseCase>();"
                  },
             };
         }
-
-        public Task AddCodeSnippetAsync(CodeSnippet codeSnippet)
-        {
-            if (_codeSnippets.Any(x => x.Name.Equals(codeSnippet.Name, StringComparison.OrdinalIgnoreCase)))
-            {
-                return Task.CompletedTask; 
-            }
-            var maxId = this._codeSnippets.Max(x => x.Id);
-
-            codeSnippet.Id = maxId;
-            codeSnippet.PublicationDate = DateOnly.FromDateTime(DateTime.Now);
-            codeSnippet.IsDeprecated= false;
-
-            _codeSnippets.Add(codeSnippet);
-
-            return Task.CompletedTask;
-
-        }
-
         public async Task<IEnumerable<CodeSnippet>> GetCodeSnippetsByNameAsync(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -199,6 +181,48 @@ builder.Services.AddTransient<IAddCodeSnippetUseCase, AddCodeSnippetUseCase>();"
             .Where(x => x.Name.Contains
             (name, StringComparison.OrdinalIgnoreCase));
             return result;
+        }
+
+        public Task AddCodeSnippetAsync(CodeSnippet codeSnippet)
+        {
+            if (_codeSnippets.Any(x => x.Name.Equals(codeSnippet.Name, StringComparison.OrdinalIgnoreCase)))
+            {
+                return Task.CompletedTask;
+            }
+            var maxId = this._codeSnippets.Max(x => x.Id);
+
+            codeSnippet.Id = maxId;
+            codeSnippet.PublicationDate = DateOnly.FromDateTime(DateTime.Now);
+            codeSnippet.IsDeprecated = false;
+
+            _codeSnippets.Add(codeSnippet);
+
+            return Task.CompletedTask;
+
+        }
+
+        public Task UpdateCodeSnippetAsync(CodeSnippet codeSnippet)
+        {
+            if (_codeSnippets.Any(j => j.Id != codeSnippet.Id &&
+                j.Name.Equals(codeSnippet.Name, StringComparison.OrdinalIgnoreCase)))
+            {
+                return Task.CompletedTask;
+            }
+
+            var inv = _codeSnippets.FirstOrDefault(j => j.Id == codeSnippet.Id);
+            if (inv != null)
+            {
+                inv.Name = codeSnippet.Name;
+                inv.Description = codeSnippet.Description;
+                inv.Author= codeSnippet.Author;
+                inv.PublicationDate = codeSnippet.PublicationDate;
+                inv.IsDeprecated = codeSnippet.IsDeprecated;
+                inv.Code = codeSnippet.Code;
+                inv.Category = codeSnippet.Category;
+                inv.Language = codeSnippet.Language;
+            }
+
+            return Task.CompletedTask;
         }
     }
 }

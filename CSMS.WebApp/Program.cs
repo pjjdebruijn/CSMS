@@ -14,6 +14,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<ICodeSnippetRepository, CodeSnippetRepository>();
 builder.Services.AddTransient<IViewCodeSnippetsByNameUseCase, ViewCodeSnippetsByNameUseCase>();
 builder.Services.AddTransient<IAddCodeSnippetUseCase, AddCodeSnippetUseCase>();
+builder.Services.AddTransient<IUpdateCodeSnippetUseCase, UpdateCodeSnippetUseCase>();
 
 // build app
 var app = builder.Build();

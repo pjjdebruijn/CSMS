@@ -2,6 +2,7 @@
 @using CSMS.UseCases.UseCases.CodeSnippetInterfaces;
 
 @inject IViewCodeSnippetsByNameUseCase ViewCodeSnippetsByNameUseCase
+@inject IUpdateCodeSnippetUseCase UpdateCodeSnippetUseCase
 
 <PageTitle>Test Page</PageTitle>
 <br />
@@ -32,6 +33,21 @@
 
     protected override async Task OnInitializedAsync()
     {
+        //_codeSnippets = (await ViewCodeSnippetsByNameUseCase.ExecuteAsync()).ToList();
+
+        //var codesnippet = new CodeSnippet()
+        //    {
+        //        Id = 5,
+        //        Name = "Fee functions",
+        //        Code = "                if (false)\r\n            {\r\n\r\n            }",
+        //        Author = "Chuck sdzxNorris",
+        //        Description = "Function that kicks ass",
+        //        PublicationDate = DateOnly.FromDateTime(new DateTime(1984, 12, 6)),
+        //        IsDeprecated = false,
+        //    };
+
+        //await UpdateCodeSnippetUseCase.ExecuteAsync(codesnippet);
+
         _codeSnippets = (await ViewCodeSnippetsByNameUseCase.ExecuteAsync()).ToList();
     }
 }
