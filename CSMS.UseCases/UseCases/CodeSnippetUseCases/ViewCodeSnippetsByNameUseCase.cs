@@ -1,7 +1,7 @@
 ﻿namespace CSMS.UseCases.Feature.CodeSnippets
 {
     using CSMS.CoreBusiness;
-    using CSMS.UseCases.FeatureUseCases.CodeSnippetInterfaces;
+    using CSMS.UseCases.UseCases.CodeSnippetInterfaces;
     using CSMS.UseCases.PluginInterfaces;
 
     public class ViewCodeSnippetsByNameUseCase : IViewCodeSnippetsByNameUseCase

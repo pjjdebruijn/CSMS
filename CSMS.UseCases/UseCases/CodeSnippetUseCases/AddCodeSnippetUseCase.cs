@@ -1,8 +1,8 @@
 ﻿using CSMS.CoreBusiness;
-using CSMS.UseCases.FeatureUseCases.CodeSnippetInterfaces;
+using CSMS.UseCases.UseCases.CodeSnippetInterfaces;
 using CSMS.UseCases.PluginInterfaces;
 
-namespace CSMS.UseCases.FeatureUseCases.CodeSnippetUseCases
+namespace CSMS.UseCases.UseCases.CodeSnippetUseCases
 {
     public class AddCodeSnippetUseCase : IAddCodeSnippetUseCase
     {
