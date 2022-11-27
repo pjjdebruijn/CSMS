@@ -1,7 +1,7 @@
 using CSMS.Plugins.InMemory;
 using CSMS.UseCases.Feature.CodeSnippets;
-using CSMS.UseCases.FeatureUseCases.CodeSnippetInterfaces;
-using CSMS.UseCases.FeatureUseCases.CodeSnippetUseCases;
+using CSMS.UseCases.UseCases.CodeSnippetInterfaces;
+using CSMS.UseCases.UseCases.CodeSnippetUseCases;
 using CSMS.UseCases.PluginInterfaces;
 
 
