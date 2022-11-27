@@ -4,6 +4,7 @@
 
     public interface ICodeSnippetRepository
     {
+        Task AddCodeSnippetAsync(CodeSnippet codeSnippet);
         Task<IEnumerable<CodeSnippet>> GetCodeSnippetsByNameAsync(string name);
     }
 }

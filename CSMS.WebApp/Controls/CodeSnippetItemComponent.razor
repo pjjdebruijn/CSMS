@@ -1,0 +1,20 @@
+﻿@if (CodeSnippets != null && CodeSnippets.Count > 0)
+{
+    foreach (var codeSnippet in CodeSnippets)
+    {
+        <tr>
+            <td>@codeSnippet.Name</td>
+            <td>@codeSnippet.Author</td>
+            <td>@codeSnippet.PublicationDate</td>
+            <td>
+                <button type="button"
+                class="btn btn-light"></button>
+            </td>
+        </tr>
+    }
+}
+
+@code {
+    [Parameter]
+    public List<CodeSnippet> CodeSnippets { get; set; } = new List<CodeSnippet>();
+}

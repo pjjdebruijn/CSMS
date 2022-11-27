@@ -1,12 +1,18 @@
 ﻿@page  "/CodeSnippets"
 
+@inject NavigationManager NavigationManager
+
 <h3>CodeSnippetList</h3>
 <br />
-<SearchCodeSnippetComponent 
-    OnSearchCodeSnippet="OnCodeSnippetSearch"></SearchCodeSnippetComponent>
+<CodeSnippetSearchComponent 
+    OnSearchCodeSnippet="OnCodeSnippetSearch"></CodeSnippetSearchComponent>
 <br />
 <CodeSnippetListComponent SearchTerm="@searchTerm"></CodeSnippetListComponent>
 <br />
+<button 
+    type="button" 
+    class="btn btn-primary"
+    @onclick="AddCodeSnippet">Add code snippet</button>
 
 
 @code {
@@ -15,5 +21,10 @@
     private void OnCodeSnippetSearch(string searchTerm)
     {
         this.searchTerm = searchTerm;
+    }
+
+    private void AddCodeSnippet()
+    {
+        this.NavigationManager.NavigateTo("/AddCodeSnippet");
     }
 }
