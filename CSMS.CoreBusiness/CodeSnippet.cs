@@ -1,9 +1,13 @@
-﻿namespace CSMS.CoreBusiness
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CSMS.CoreBusiness
 {
     public class CodeSnippet
     {
+        [Key]
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; } = string.Empty;
 
         public string Code { get; set; } = string.Empty;

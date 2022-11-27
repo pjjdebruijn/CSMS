@@ -179,6 +179,10 @@ builder.Services.AddTransient<IAddCodeSnippetUseCase, AddCodeSnippetUseCase>();"
             var maxId = this._codeSnippets.Max(x => x.Id);
 
             codeSnippet.Id = maxId;
+            codeSnippet.PublicationDate = DateOnly.FromDateTime(DateTime.Now);
+            codeSnippet.IsDeprecated= false;
+
+            _codeSnippets.Add(codeSnippet);
 
             return Task.CompletedTask;
 
