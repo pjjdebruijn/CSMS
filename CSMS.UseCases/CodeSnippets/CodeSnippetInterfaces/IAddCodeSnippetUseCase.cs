@@ -1,6 +1,6 @@
 ﻿using CSMS.CoreBusiness;
 
-namespace CSMS.UseCases.UseCases.CodeSnippetInterfaces
+namespace CSMS.UseCases.CodeSnippets.CodeSnippetInterfaces
 {
     public interface IAddCodeSnippetUseCase
     {

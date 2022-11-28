@@ -1,20 +1,21 @@
 ﻿using CSMS.CoreBusiness;
-using CSMS.UseCases.UseCases.CodeSnippetInterfaces;
 using CSMS.UseCases.PluginInterfaces;
+using CSMS.UseCases.CodeSnippets.CodeSnippetInterfaces;
 
 namespace CSMS.UseCases.UseCases.CodeSnippetUseCases
 {
-    public class AddCodeSnippetUseCase : IAddCodeSnippetUseCase
+    public class UpdateCodeSnippetUseCase : IUpdateCodeSnippetUseCase
     {
         private readonly ICodeSnippetRepository codeSnippetRepository;
 
-        public AddCodeSnippetUseCase(ICodeSnippetRepository codeSnippetRepository)
+        public UpdateCodeSnippetUseCase(ICodeSnippetRepository codeSnippetRepository)
         {
             this.codeSnippetRepository = codeSnippetRepository;
         }
+
         public async Task ExecuteAsync(CodeSnippet codeSnippet)
         {
-            await this.codeSnippetRepository.AddCodeSnippetAsync(codeSnippet);
+            await codeSnippetRepository.UpdateCodeSnippetAsync(codeSnippet);
         }
     }
 }

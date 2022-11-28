@@ -1,6 +1,6 @@
 using CSMS.Plugins.InMemory;
 using CSMS.UseCases.PluginInterfaces;
-using CSMS.UseCases.UseCases.CodeSnippetInterfaces;
+using CSMS.UseCases.CodeSnippets.CodeSnippetInterfaces;
 using CSMS.UseCases.UseCases.CodeSnippetUseCases;
 
 var builder = WebApplication.CreateBuilder(args);
