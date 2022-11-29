@@ -12,12 +12,6 @@
 
     private string codeSnippetNameToSearch = string.Empty;
 
-    // we need to pass out the search value to the parent
-    // information can be passed to the parent using eventcallbacks
-
-    // nb een eventcallback kun je zien als een smsje dat naar buiten gestuurd wordt
-    // ben je geabonneerd op dit sms groepje dan kun je het berichtje lezen en erop acteren, 
-
     [Parameter]
     public EventCallback<string> OnSearchCodeSnippet { get; set; }
 
@@ -28,7 +22,6 @@
 
     private void OnSearch()
     {
-        // passes codesnippetname to search back to parent control
         OnSearchCodeSnippet.InvokeAsync(codeSnippetNameToSearch);
     }
 
