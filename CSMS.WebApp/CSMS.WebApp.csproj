@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CSMS.CoreBusiness\CSMS.CoreBusiness.csproj" />
     <ProjectReference Include="..\CSMS.Plugins\CSMS.Plugins.InMemory\CSMS.Plugins.InMemory.csproj" />
     <ProjectReference Include="..\CSMS.UseCases\CSMS.UseCases.csproj" />
   </ItemGroup>
